@@ -15,7 +15,7 @@
   <!-- Load the jquery library fron google cdn -->
   <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" charset="utf-8">
-
+  
   // Constant to hold the value of the Client ID.
   const YOUR_CLIENT_ID = 'de25f53a580594079b67845933c1fef0857d97c7055938deca4f24f463573feb';
 
@@ -64,7 +64,7 @@
         var authUrl = AUTHORIZATION_ENDPOINT +
           "?response_type=token" +
           "&client_id="    + clientId +
-          "&redirect_uri=" + 'urn:ietf:wg:oauth:2.0:oob';
+          "&redirect_uri=" + window.location;
 
         $("a.connect").attr("href", authUrl);
       }
@@ -77,22 +77,29 @@
   </style>
 </head>
 
-<body>
+<body style="margin:0; background-color:lightgray">
+  <nav style="background-color:#87EC67; padding:15px">
+        <a href="#">Home</a>
+        <a href="dashboard.stevegustus.me">Dashboard</a>
+        <a href="#">Blog</a>
+    </nav>
 
-  <h1>Procore API Dashboard</h1>
+  <div style="background-color:white; margin-left:15px; margin-right:15px; padding:15px">
+      <h2 style="padding:0">Procore API Dashboard</h2>
 
-  <div class="authenticate hidden">
-    <a class="connect" href="">Log in with Procore</a>
-  </div>
+      <div class="authenticate hidden">
+        <a class="connect" href="">Log in with Procore</a>
+      </div>
 
-  <div class="authenticated hidden">
+      <div class="authenticated hidden">
 
-    <h2>You are using token:</h2>
-    <p><span class="token">[no token]</span></p>
+        <h2>You are using token:</h2>
+        <p><span class="token">[no token]</span></p>
 
-    <h2>Your Procore username is:</h2>
-    <p><span class="user">[no username]</span></p>
+        <h2>Your Procore username is:</h2>
+        <p><span class="user">[no username]</span></p>
 
+      </div>
   </div>
 
 </body>
