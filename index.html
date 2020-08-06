@@ -47,7 +47,10 @@ Cross-Origin Resource Sharing (CORS). -->
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('Authorization', "Bearer " + token);
                         xhr.setRequestHeader('Accept', "application/json");
-                        xhr.setRequestHeader('Access-Control-Allow-Origin', "https://api.procore.com/")
+                        xhr.setRequestHeader('Access-Control-Allow-Origin', "procore.com");
+                        xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
+                        xhr.setRequestHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+                        xhr.setRequestHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
                     },
                     success: function (response) {
                         var container = $('span.user');
@@ -81,8 +84,8 @@ Cross-Origin Resource Sharing (CORS). -->
 
 <body style="margin:0; background-color:lightgray">
     <nav style="background-color:#87EC67; padding:15px">
-        <a href="#">Home</a>
-        <a href="dashboard.stevegustus.me">Dashboard</a>
+        <a href="www.stevegustus.me">Home</a>
+        <a href="/">Dashboard</a>
         <a href="#">Blog</a>
     </nav>
 
