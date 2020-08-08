@@ -9,6 +9,7 @@
     <!-- Load the jquery library fron google cdn -->
     <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+    
     <script type="text/javascript" charset="utf-8">
 
         // Constant to hold the value of the Client ID.
@@ -46,7 +47,7 @@
                     success: function (response) {
                         var container = $('span.user');
                         if (response) {
-                            container.text(response.login);
+                            container.text(response.name);
                         } else {
                             container.text("An error occurred.");
                         }
@@ -66,8 +67,6 @@
         });
 
         /**/</script>
-
-    
 
     <style>
         .hidden {
@@ -92,14 +91,10 @@
 
         <div class="authenticated hidden">
 
-            <h2>You are using token:</h2>
-            <p><span class="token">[no token]</span></p>
-
-            <h2>Your Procore username is:</h2>
-            <p><span class="user">[no username]</span></p>
-
+            <h2>Welcome, <span class="user">[error obtaining user]</span></h2>
 
             <div id="myChart-wrapper" style="margin:2.5%; padding:2.5%; width:40%; float:left; background-color:white; box-shadow:10px">
+                <h3>RFIs</h3>
                 <canvas id="myChart"></canvas>
                 <script>
                     var ctx = document.getElementById('myChart');
@@ -142,6 +137,7 @@
                 </script>
             </div>
             <div id="myChart-wrapper2" style="margin:2.5%; padding:2.5%; width:40%; float:right; background-color:white; box-shadow:10px">
+                <h3>Submittals</h3>
                 <canvas id="myChart2"></canvas>
                 <script>
                     var ctx = document.getElementById('myChart2');
