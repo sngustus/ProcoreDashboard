@@ -54,6 +54,7 @@
                     }
                 });
 
+                //make a call to GET companies endpoint
                 $.ajax({
                     type: 'GET',
                     url: 'https://api.procore.com/vapid/companies',
@@ -64,8 +65,9 @@
                         xhr.setRequestHeader('Accept', "application/json");
                     },
                     success: function (response) {
-                        var container = $('companies');
+                        var container = $('#companies');
                         if (response) {
+                            console.log(response)
                             var buffer = '<ul>';
                             for (var i = 0; i < response.length; i++) {
                                 var item = response[i];
@@ -116,8 +118,8 @@
         <div class="authenticated hidden">
 
             <h2>Welcome, <span class="user">[error obtaining user]</span></h2>
-            <ul id="companies">
-            </ul>
+            <p id="companies"></p>
+
             <div id="myChart-wrapper" style="margin:2.5%; padding:2.5%; width:40%; float:left; background-color:white; box-shadow:10px">
                 <h3>RFIs</h3>
                 <canvas id="myChart"></canvas>
