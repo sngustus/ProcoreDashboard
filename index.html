@@ -47,7 +47,7 @@
                     success: function (response) {
                         var container = $('span.user');
                         if (response) {
-                            container.text(response.name);
+                            container.text(response.login);
                         } else {
                             container.text("An error occurred.");
                         }
@@ -142,7 +142,7 @@
                 <script>
                     var ctx = document.getElementById('myChart2');
                     var myChart = new Chart(ctx, {
-                        type: 'pie',
+                        type: 'doughnut',
                         data: {
                             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                             datasets: [{
