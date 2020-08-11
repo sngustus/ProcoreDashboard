@@ -53,6 +53,30 @@
                         }
                     }
                 });
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.procore.com/vapid/companies',
+                    dataType: 'json',
+                    crossDomain: 'true',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', "Bearer " + token);
+                        xhr.setRequestHeader('Accept', "application/json");
+                    },
+                    success: function (response) {
+                        var container = $('companies');
+                        if (response) {
+                            var buffer = "";
+                            for (var i = 0; i < response.length; i++) {
+                                var item = response[i];
+                                buffer += " <li>" + item.name + "</li> ";
+                            }
+                            container.html(buffer);
+                        } else {
+                            container.text("Unable to load companies.");
+                        }
+                    }
+                });
             } else {
                 $('div.authenticate').show();
 
@@ -83,7 +107,7 @@
     </nav>
 
     <div style="background-color:white; margin-left:15px; margin-right:15px; padding:15px">
-        <h2 style="padding:0">Procore API Dashboard</h2>
+        <h1 style="padding:0">Procore API Dashboard</h1>
 
         <div class="authenticate hidden">
             <a class="connect" href="">Log in with Procore</a>
@@ -92,7 +116,8 @@
         <div class="authenticated hidden">
 
             <h2>Welcome, <span class="user">[error obtaining user]</span></h2>
-
+            <ul id="companies">
+            </ul>
             <div id="myChart-wrapper" style="margin:2.5%; padding:2.5%; width:40%; float:left; background-color:white; box-shadow:10px">
                 <h3>RFIs</h3>
                 <canvas id="myChart"></canvas>
