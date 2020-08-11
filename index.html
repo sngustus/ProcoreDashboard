@@ -66,12 +66,12 @@
                     success: function (response) {
                         var container = $('companies');
                         if (response) {
-                            var buffer = "";
+                            var buffer = '<ul>';
                             for (var i = 0; i < response.length; i++) {
                                 var item = response[i];
                                 buffer += " <li>" + item.name + "</li> ";
                             }
-                            container.html(buffer);
+                            container.html((buffer + '</ul>'));
                         } else {
                             container.text("Unable to load companies.");
                         }
