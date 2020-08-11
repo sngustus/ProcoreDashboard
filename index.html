@@ -67,11 +67,10 @@
                     success: function (response) {
                         var container = $('#companies');
                         if (response) {
-                            console.log(response)
-                            var buffer = '<ul>';
+                            var buffer = '';
                             for (var i = 0; i < response.length; i++) {
                                 var item = response[i];
-                                buffer += " <li>" + item.name + "</li> ";
+                                buffer += " <input type='checkbox' id='" + item.name + "'><label for='" + item.name + "'> " + item.name + "</label><br />";
                             }
                             container.html((buffer + '</ul>'));
                         } else {
