@@ -47,7 +47,7 @@
                     success: function (response) {
                         var container = $('span.user');
                         if (response) {
-                            container.text(response.login);
+                            container.text(response.name + ' (' + response.login + ')');
                         } else {
                             container.text("An error occurred.");
                         }
