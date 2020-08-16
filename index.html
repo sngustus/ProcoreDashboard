@@ -101,110 +101,115 @@
 </head>
 
 <body style="margin:0; background-color:lightgray">
-    <nav style="background-color:#87EC67; padding:15px">
-        <a href="www.stevegustus.me">Home</a>
+    <nav style="background-color:#c20bde; padding:15px">
+        <a href="#">Home</a>
         <a href="/">Dashboard</a>
-        <a href="#">Blog</a>
     </nav>
 
     <div style="background-color:white; margin-left:15px; margin-right:15px; padding:15px">
-        <h1 style="padding:0">Procore API Dashboard</h1>
-
         <div class="authenticate hidden">
+            <h1 style="padding:0">Procore API Dashboard</h1>
             <a class="connect" href="">Log in with Procore</a>
         </div>
 
         <div class="authenticated hidden">
 
             <h2>Welcome, <span class="user">[error obtaining user]</span></h2>
-            <p id="companies"></p>
+            <div class="compnay-select">
+                <h3>Select Organization(s) to Obtain Data</h3>
+                <p id="companies"></p>
+                <button style="background-color:#c20bde; color:white">Fetch Data</button>
+            </div>
 
-            <div id="myChart-wrapper" style="margin:2.5%; padding:2.5%; width:40%; float:left; background-color:white; box-shadow:10px">
-                <h3>RFIs</h3>
-                <canvas id="myChart"></canvas>
-                <script>
-                    var ctx = document.getElementById('myChart');
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                            datasets: [{
-                                label: '# of Votes',
-                                data: [12, 19, 3, 5, 2, 3],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
+            <div id="chart-area" class="hidden">
+                <div id="myChart-wrapper" style="margin:2.5%; padding:2.5%; width:40%; float:left; background-color:white; box-shadow:10px">
+                    <h3>RFIs</h3>
+                    <canvas id="myChart"></canvas>
+                    <script>
+                        var ctx = document.getElementById('myChart');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                datasets: [{
+                                    label: '# of Votes',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
                                 }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
                             }
-                        }
-                    });
-                </script>
-            </div>
-            <div id="myChart-wrapper2" style="margin:2.5%; padding:2.5%; width:40%; float:right; background-color:white; box-shadow:10px">
-                <h3>Submittals</h3>
-                <canvas id="myChart2"></canvas>
-                <script>
-                    var ctx = document.getElementById('myChart2');
-                    var myChart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                            datasets: [{
-                                label: '# of Votes',
-                                data: [12, 19, 3, 5, 2, 3],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
+                        });
+                    </script>
+                </div>
+                <div id="myChart-wrapper2" style="margin:2.5%; padding:2.5%; width:40%; float:right; background-color:white; box-shadow:10px">
+                    <h3>Submittals</h3>
+                    <canvas id="myChart2"></canvas>
+                    <script>
+                        var ctx = document.getElementById('myChart2');
+                        var myChart = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                datasets: [{
+                                    label: '# of Votes',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
                                 }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
                             }
-                        }
-                    });
-                </script>
+                        });
+                    </script>
+                </div>
             </div>
+
         </div>
     </div>
 
