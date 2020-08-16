@@ -91,7 +91,12 @@
             }
         });
 
+        $(function showDash() {
+            $('div.chart-area').show();
+        });
+
         /**/</script>
+
 
     <style>
         .hidden {
@@ -118,7 +123,7 @@
             <div class="compnay-select">
                 <h3>Select Organization(s) to Obtain Data</h3>
                 <p id="companies"></p>
-                <button style="background-color:#c20bde; color:white">Fetch Data</button>
+                <button onClick="showDash" style="background-color:#c20bde; color:white">Fetch Data</button>
             </div>
 
             <div id="chart-area" class="hidden">
