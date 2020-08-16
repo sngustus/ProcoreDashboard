@@ -94,8 +94,9 @@
     </script>
     <script>
         function showDash() {
-            $('div.chart-area').show();
+            $('#chart-area').show();
             console.log('Unable to Fetch Data.');
+            $('#company-select').hide();
         };
     </script>
 
@@ -127,7 +128,7 @@
                 <button onClick="showDash()" style="background-color:#c20bde; color:white">Fetch Data</button>
             </div>
 
-            <div id="chart-area" class="chart-area hidden">
+            <div id="chart-area" class="hidden">
                 <div id="myChart-wrapper" style="margin:2.5%; padding:2.5%; width:40%; float:left; background-color:white; box-shadow:10px">
                     <h3>RFIs</h3>
                     <canvas id="myChart"></canvas>
