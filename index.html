@@ -94,9 +94,9 @@
     </script>
     <script>
         function showDash() {
-            $('#chart-area').show();
-            console.log('Unable to Fetch Data.');
             $('#company-select').hide();
+            $('#chart-area').show();
+            $('#FYI').show();
         };
     </script>
 
@@ -127,6 +127,7 @@
                 <p id="companies"></p>
                 <button onClick="showDash()" style="background-color:#c20bde; color:white">Fetch Data</button>
             </div>
+            <div id="FYI" class="hidden"><h3>Dashboard is populated with sample data at this time.</h3></div>
 
             <div id="chart-area" class="hidden">
                 <div id="myChart-wrapper" style="margin:2.5%; padding:2.5%; width:40%; float:left; background-color:white; box-shadow:10px">
