@@ -95,7 +95,7 @@
                 var authUrl = AUTHORIZATION_ENDPOINT +
                     "?response_type=token" +
                     "&client_id=" + clientId +
-                    "&redirect_uri=" + window.location;
+                    "&redirect_uri=" + top.location;
 
                 if (!isInIframe()) { $("a.connect").attr("href", authUrl) };
                 if (isInIframe()) { context.authentication.authenticate({ url: authUrl, onSuccess: showDash(), onFailure: function (error) { console.log(error); } }) };
