@@ -24,6 +24,14 @@
                 return !!match && match[1];
             };
 
+            var isInIframe = function () {
+                    try {
+                        return window.self !== window.top;
+                    } catch (e) {
+                        return true;
+                    }
+                }
+
             // Initialize some variables for Client ID and required endpoints.
             var clientId = YOUR_CLIENT_ID;
             var AUTHORIZATION_ENDPOINT = "https://login.procore.com/oauth/authorize";
@@ -89,8 +97,9 @@
                     "&client_id=" + clientId +
                     "&redirect_uri=" + window.location;
 
-                $("a.connect").attr("href", authUrl);
-                context.authentication.authenticate({ url: './', onSuccess: showDash(), onFailure: function (error) { console.log(error); }})
+                if (!isInIframe()) { $("a.connect").attr("href", authUrl) };
+                if (isInIframe()) { context.authentication.authenticate({ url: './', onSuccess: showDash(), onFailure: function (error) { console.log(error); } }) };
+                
             }
         });
 
