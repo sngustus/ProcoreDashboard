@@ -98,7 +98,7 @@
                     "&redirect_uri=" + window.location;
 
                 if (!isInIframe()) { $("a.connect").attr("href", authUrl) };
-                if (isInIframe()) { context.authentication.authenticate({ url: '/auth/procore', onSuccess: showDash(), onFailure: function (error) { console.log(error); } }) };
+                if (isInIframe()) { context.authentication.authenticate({ url: authUrl, onSuccess: showDash(), onFailure: function (error) { console.log(error); } }) };
                 
             }
         });
