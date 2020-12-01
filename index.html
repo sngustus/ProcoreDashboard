@@ -45,6 +45,7 @@
                 $('span.token').text(token);
 
                 // Make a call to the /me endpoint.
+                console.log("get /me");
                 $.ajax({
                     type: 'GET',
                     url: RESOURCE_ENDPOINT,
@@ -65,6 +66,7 @@
                 });
 
                 //make a call to GET companies endpoint
+                console.log('get comps');
                 $.ajax({
                     type: 'GET',
                     url: 'https://api.procore.com/vapid/companies',
@@ -98,7 +100,7 @@
                     "&redirect_uri=" + top.location;
 
                 if (!isInIframe()) { $("a.connect").attr("href", authUrl) };
-                if (isInIframe()) { context.authentication.authenticate({ url: authUrl, onSuccess: window.location = "./", onFailure: function (error) { console.log(error); } }) };
+                if (isInIframe()) { context.authentication.authenticate({ url: authUrl, onSuccess: function () { window.location = "./"; console.log('authSuccess'); }, onFailure: function (error) { console.log(error); } }) };
                 
             }
         });
