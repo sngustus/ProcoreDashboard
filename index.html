@@ -9,8 +9,10 @@
     <!-- Load the jquery library fron google cdn -->
     <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
-    
+    <script type="text/javascript" src="/libraries/ProcoreIframeHelpers.js"></script>
+
     <script type="text/javascript" charset="utf-8">
+        const context = procoreIframeHelpers.initialize(); //Procore helpers for embedded apps
 
         // Constant to hold the value of the Client ID.
         const YOUR_CLIENT_ID = 'de25f53a580594079b67845933c1fef0857d97c7055938deca4f24f463573feb';
@@ -88,6 +90,7 @@
                     "&redirect_uri=" + window.location;
 
                 $("a.connect").attr("href", authUrl);
+                context.authentication.authenticate({ url: './', onSuccess: showDash(), onFailure: function (error) { console.log(error); }})
             }
         });
 
